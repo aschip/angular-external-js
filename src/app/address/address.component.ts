@@ -35,7 +35,7 @@ export class AddressComponent implements OnInit {
   
 }
 
-public addressSelected = (function(address, metaData) {
+addressSelected = (function(address, metaData) {
     console.log(metaData);
     }).bind(this);
 }
