@@ -16,7 +16,7 @@ export class AddressComponent implements OnInit {
     document.body.appendChild(script);
   }
 
-  initAf() {
+  initAf = ()=> {
     let widget = new AddressFinder.Widget(
       document.getElementById("addrs"),
       "ADDRESSFINDER_DEMO_KEY",
@@ -25,7 +25,7 @@ export class AddressComponent implements OnInit {
     );
     var vm = this;
     /* widget documentation is here: https://addressfinder.nz/docs/widget_docs/ */
-    widget.on("address:select",vm.addressSelected);
+    widget.on("address:select",(address,metaData)=>this.addressSelected(address,metaData));
       //
 
     /* this works fine but cannot get angular component inside the function*/
@@ -35,7 +35,11 @@ export class AddressComponent implements OnInit {
   
 }
 
-addressSelected = (function(address, metaData) {
+addressSelected = (address, metaData) => {
     console.log(metaData);
-    }).bind(this);
+    }
+
+/*addressSelected = (function(address, metaData) {
+    console.log(metaData);
+    }).bind(this);*/
 }
